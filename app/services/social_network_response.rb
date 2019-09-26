@@ -9,9 +9,22 @@ class SocialNetworkResponse
     @url = url
   end
 
-  def call; end
+  def call
+    call_social_network
+    handle_response
+  end
 
   private
 
-  attr_reader :url
+  attr_reader :url, :response
+
+  def call_social_network
+    @response = Faraday.get(url)
+  end
+
+  def handle_response
+    JSON.parse(response.body)
+  rescue JSON::ParserError
+    nil
+  end
 end
