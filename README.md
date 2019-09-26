@@ -20,12 +20,15 @@ Each social network response is cached with a defined TTL. I rely on 'race_condi
 This approach helps to handle high load and fix the following issues:
 
 * Unnecessary requests to the social networks - only one request per cache TTL is made to each social network.
-* Erroneous responses - Client will see stale data until the next cache invalidation.
+* Erroneous responses - Client will see stale data until the next cache invalidation.*
 
 Drawbacks:
 
 * Clients receive stale data during the cache update.
 * Clients receive stale data till the next cache invalidation in case of erroneous response from the social networks.
+
+*Rails will skip nil caching only on some of cache driver implementations.
+
 
 ##Tests
 Run rspec to check the code.
