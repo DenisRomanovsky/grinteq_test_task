@@ -7,7 +7,7 @@ class SocialNetworksMonitor
     { name: :instagram, url: 'https://takehome.io/instagram' }
   ].freeze
 
-  CACHE_TTL = 5.second.freeze
+  CACHE_TTL = 5.seconds.freeze
   CACHE_RACE_CONDITION_TTL = 8
 
   def self.call

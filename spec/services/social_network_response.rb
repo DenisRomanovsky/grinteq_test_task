@@ -6,7 +6,7 @@ RSpec.describe SocialNetworkResponse do
   subject { described_class.call(url) }
 
   let(:url) { 'fake_url' }
-  let(:expected_response) { {'test' => 'value'} }
+  let(:expected_response) { { 'test' => 'value' } }
   let(:response_double) { double('faraday_response', body: expected_response.to_json) }
 
   before { expect(Faraday).to receive(:get).with(url).and_return(response_double) }

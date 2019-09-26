@@ -12,10 +12,14 @@ RSpec.describe SocialNetworksMonitor do
       instagram: social_network_response }
   end
 
+  before do
+    expect(SocialNetworkResponse).to receive(:call)
+      .exactly(SocialNetworksMonitor::SOCIAL_NETWORKS.size).times
+      .and_return(social_network_response)
+  end
+
   describe '#call' do
     it 'calls social networks' do
-      expect(SocialNetworkResponse).to receive(:call).exactly(SocialNetworksMonitor::SOCIAL_NETWORKS.size).times
-                                                     .and_return(social_network_response)
       expect(subject).to eq(social_networks_data)
     end
 
