@@ -27,15 +27,16 @@ Drawbacks:
 * Clients receive stale data during the cache update.
 * Clients receive stale data till the next cache invalidation in case of erroneous response from the social networks.
 
-*Rails will skip nil caching only on some of cache driver implementations.
+*Rails will skip nil caching only on some of cache driver implementations, like Memcached.
 
 
-##Tests
+## Tests
+
 Run rspec to check the code.
 
 ## What can be improved
-* Store cache in redis
+* Store cache in redis or Memcached.
 * Move the requests to Social Networks to a background job to fix the first slow response when cache is invalidated.
 * A backgorund job may utilise threads to make cache updates faster.
-* Add a retry logic to fix erroneous 
+* Add a retry logic to fix erroneous responses.
 
